@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О проекте</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            position: relative;
+            text-align: center;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            max-width: 250px;
+            filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.7));
+        }
+
+        /* Кнопка "В меню" */
+        .menu-button {
+            margin: 20px 0;
+            padding: 16px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(to right, #0066cc, #00bfff);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .menu-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-button:hover::before {
+            left: 100%;
+        }
+
+        .menu-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* FAQ - Стиль спойлеров */
+        .faq-section {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            padding: 12px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 15px;
+            color: #ddd;
+        }
+
+        /* Статистика */
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 25px 0;
+        }
+
+        .stat-box {
+            background: rgba(0, 98, 204, 0.3);
+            padding: 15px 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00bfff;
+            text-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Логи обновлений */
+        .update-section {
+            width: 80%;
+            max-width: 600px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: rgba(30, 30, 30, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
+
+        .update-item {
+            padding: 8px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .update-date {
+            color: #00bfff;
+            margin-right: 10px;
+        }
+
+        /* Футер */
+        .footer {
+            margin-top: 30px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .version {
+            color: #00bfff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="logo.png" alt="Логотип" class="logo">
+    </div>
+
+    <!-- Кнопка "В меню" -->
+    <a href="PLAY.html" class="menu-button">В меню</a>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+        <h2>Часто задаваемые вопросы</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(1)">
+                <span>Про что этот проект?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" id="answer1">
+                Haxball Draft Manager - стратегический симулятор, где вы создаете команду мечты через систему драфта. Почувствуй себе тренером профессиональной команды. Соберите идеальный состав из реальных игроков сообщества игры "Haxball", выберите тактику и приведите свою команду к победе в турнире. Динамичная система матчей с реалистичной статистикой и непредсказуемыми исходами!
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(2)">
+                <span>Исходя из чего высчитывались рейтинги?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" id="answer2">
+                Рейтинги игроков и команд высчитывались экспертами, исходя из выступлений на известных, так и не известных турнирах. Пример известных - "CIS Haxball", "E-HAX", "BFF" (Игрок может не выступать на турнирах, если эксперты посчитают его и так хорошим)
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(3)">
+                <span>Почему меня не добавили в игру?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" id="answer3">
+                Игра находится на стадии развития, с каждым обновлением будут добовляться всё больше и больше игроков. (Если хочешь попасть в игру ближайшим обновлением, то пришли на донейшен алертс 125 рублей, и напиши свой никнейм, и контакты, чтобы я мог с тобой связаться - https://www.donationalerts.com/r/jorayoung)
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(4)">
+                <span>Что делать если я недоволен своим рейтингом?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" id="answer4">
+                Просим прощение если это так. Эксперты, что оценивали игроков, сами ничего не добилиись в турнирах, поэтому воспринимать в серьёз цифры на вашем шаре, я не рекомендую. Если вы можете доказаться свою правоту приводя аргументы, возможно я пойду на уступки. (Писать в комментарии к тг каналу - @HaxballDraftManager)
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(5)">
+                <span>Что будет добавлено в будущем?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer" id="answer5">
+                Будем развивать функционал игры, в приоритете добавить больше игроков и команд. Следить за актуальными новостями можно у нас в телеграм канале - @HaxballDraftManager
+            </div>
+        </div>
+    </div>
+
+    <!-- Статистика -->
+    <div class="stats-section">
+        <div class="stat-box">
+            <div class="stat-number">80</div>
+            <div>Игроков</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">30</div>
+            <div>Команд</div>
+        </div>
+    </div>
+
+    <!-- Логи обновлений -->
+    <div class="update-section">
+        <h3>Последние обновления</h3>
+        <div class="update-item">
+            <span class="update-date">[2025.04.08]</span>
+            Релиз
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <div class="footer">
+        <p>Haxball Draft Manager <span class="version">v1.0</span></p>
+        <p>Автор: Jora young (NoStuff)</p>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(`answer${id}`);
+            const icon = answer.previousElementSibling.querySelector('i');
+            answer.style.maxHeight = answer.style.maxHeight ? null : `${answer.scrollHeight}px`;
+            icon.classList.toggle('fa-chevron-up');
+        }
+    </script>
+</body>
+</html>
