@@ -185,6 +185,7 @@
     </style>
 </head>
 <body>
+<audio id="tapSound" src="tap.mp3"></audio>
     <div class="logo-container">
         <img src="logo.png" alt="Логотип" class="logo">
     </div>
@@ -245,11 +246,11 @@
     <!-- Статистика -->
     <div class="stats-section">
         <div class="stat-box">
-            <div class="stat-number">150</div>
+            <div class="stat-number">190</div>
             <div>Игроков</div>
         </div>
         <div class="stat-box">
-            <div class="stat-number">60</div>
+            <div class="stat-number">105</div>
             <div>Команд</div>
         </div>
     </div>
@@ -273,11 +274,15 @@
             <span class="update-date">[2025.04.13] v1.3</span>
             Добавлены 20 игроков, 10 команд и новая система дополнительного времени. Чтобы вылететь из турнира было сложнее, появилась нижняя сетка. Теперь можно смотреть статистику и текущий состав команды в реальном времени. Также пофикшены баги.
         </div>
+<div class="update-item">
+            <span class="update-date">[2025.04.17] v2.0</span>
+            Добавлена внутриигровая валюта, добавлена возможность продавать и покупать игроков, добавлены зарплаты игрокам, так-же различные надбавки и штрафы клубу и многое другое что связано с финансами. На рынке игроков реализована динамическая система изменений рейтинга. Так-же был добавлен звук клика. Добавлено 40 игроков, и 45 команд. Исправлены баги.
+        </div>
     </div>
 
     <!-- Футер -->
     <div class="footer">
-        <p>Haxball Draft Manager <span class="version">v1.3</span></p>
+        <p>Haxball Draft Manager <span class="version">v2.0</span></p>
         <p>Автор: Jora young (NoStuff)</p>
     </div>
 
@@ -288,6 +293,14 @@
             answer.style.maxHeight = answer.style.maxHeight ? null : `${answer.scrollHeight}px`;
             icon.classList.toggle('fa-chevron-up');
         }
+
+document.addEventListener('mousedown', function(event) {
+            if (event.button === 0) { // Проверка левой кнопки
+                const sound = document.getElementById('tapSound');
+                sound.currentTime = 0; // Перемотка на начало
+                sound.play(); // Воспроизведение
+            }
+        });
     </script>
 </body>
 </html>
